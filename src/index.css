@@ -1,0 +1,447 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 
+  DESIGN SYSTEM: PostFlow AI
+
+  Multi-theme support: Default (Coral/Orange) + Firstclass (Teal/Professional)
+*/
+
+@layer base {
+  /* ========================================
+     DEFAULT THEME (Orange/Coral Accent)
+     ======================================== */
+  :root,
+  .theme-default {
+    /* Core Backgrounds */
+    --background: 0 0% 99%;
+    --foreground: 222 47% 11%;
+    
+    /* Cards & Surfaces */
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --card-elevated: 210 20% 98%;
+    
+    /* Popover */
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    
+    /* Primary: Muted Steel Blue */
+    --primary: 215 25% 45%;
+    --primary-foreground: 0 0% 100%;
+    --primary-soft: 215 30% 94%;
+    --primary-hover: 215 30% 38%;
+    
+    /* Secondary: Warm Gray */
+    --secondary: 220 13% 95%;
+    --secondary-foreground: 222 47% 20%;
+    
+    /* Muted surfaces */
+    --muted: 220 14% 96%;
+    --muted-foreground: 215 16% 47%;
+    
+    /* Accent: Warm Coral - Single accent color */
+    --accent: 24 95% 53%;
+    --accent-foreground: 0 0% 100%;
+    --accent-soft: 24 100% 95%;
+    --accent-hover: 24 95% 45%;
+    
+    /* Status Colors */
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+    --success-soft: 142 76% 95%;
+    
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+    --warning-soft: 38 100% 95%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --destructive-soft: 0 100% 97%;
+    
+    /* UI Elements */
+    --border: 220 13% 91%;
+    --border-strong: 220 13% 85%;
+    --input: 220 13% 91%;
+    --ring: 215 25% 45%;
+    
+    --radius: 0.75rem;
+    --radius-sm: 0.5rem;
+    --radius-lg: 1rem;
+    --radius-xl: 1.5rem;
+    
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 hsl(220 13% 20% / 0.03);
+    --shadow: 0 1px 3px 0 hsl(220 13% 20% / 0.05), 0 1px 2px -1px hsl(220 13% 20% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(220 13% 20% / 0.05), 0 2px 4px -2px hsl(220 13% 20% / 0.05);
+    --shadow-lg: 0 10px 15px -3px hsl(220 13% 20% / 0.05), 0 4px 6px -4px hsl(220 13% 20% / 0.05);
+    --shadow-xl: 0 20px 25px -5px hsl(220 13% 20% / 0.08), 0 8px 10px -6px hsl(220 13% 20% / 0.05);
+    
+    /* Sidebar */
+    --sidebar-background: 220 20% 98%;
+    --sidebar-foreground: 222 47% 20%;
+    --sidebar-primary: 215 25% 45%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 14% 94%;
+    --sidebar-accent-foreground: 222 47% 11%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 215 25% 45%;
+    
+    /* Brand Logo: show default logo */
+    --brand-logo-display: block;
+    --brand-logo-fc-display: none;
+  }
+
+  /* ========================================
+     FIRSTCLASS HOME IMPROVEMENTS THEME
+     Muted Teal Primary + Warm Gold Accent
+     ======================================== */
+  .theme-firstclass {
+    /* Core Backgrounds - Warm off-white */
+    --background: 40 30% 98%;
+    --foreground: 220 30% 15%;
+    
+    /* Cards & Surfaces - Clean white with warm undertone */
+    --card: 40 20% 99%;
+    --card-foreground: 220 30% 15%;
+    --card-elevated: 40 25% 97%;
+    
+    /* Popover */
+    --popover: 40 20% 99%;
+    --popover-foreground: 220 30% 15%;
+    
+    /* Primary: Muted Teal / Blue-Green */
+    --primary: 175 35% 38%;
+    --primary-foreground: 0 0% 100%;
+    --primary-soft: 175 40% 94%;
+    --primary-hover: 175 40% 32%;
+    
+    /* Secondary: Warm Neutral */
+    --secondary: 35 15% 93%;
+    --secondary-foreground: 220 30% 20%;
+    
+    /* Muted surfaces */
+    --muted: 35 12% 94%;
+    --muted-foreground: 220 15% 45%;
+    
+    /* Accent: Warm Gold (used sparingly) */
+    --accent: 42 85% 48%;
+    --accent-foreground: 220 30% 15%;
+    --accent-soft: 42 70% 94%;
+    --accent-hover: 42 85% 42%;
+    
+    /* Status Colors */
+    --success: 152 60% 42%;
+    --success-foreground: 0 0% 100%;
+    --success-soft: 152 50% 94%;
+    
+    --warning: 38 85% 52%;
+    --warning-foreground: 220 30% 15%;
+    --warning-soft: 38 80% 94%;
+    
+    --destructive: 0 70% 55%;
+    --destructive-foreground: 0 0% 100%;
+    --destructive-soft: 0 80% 96%;
+    
+    /* UI Elements */
+    --border: 35 15% 88%;
+    --border-strong: 35 15% 82%;
+    --input: 35 15% 88%;
+    --ring: 175 35% 38%;
+    
+    /* Shadows - Warmer tone */
+    --shadow-sm: 0 1px 2px 0 hsl(35 20% 20% / 0.03);
+    --shadow: 0 1px 3px 0 hsl(35 20% 20% / 0.05), 0 1px 2px -1px hsl(35 20% 20% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(35 20% 20% / 0.06), 0 2px 4px -2px hsl(35 20% 20% / 0.05);
+    --shadow-lg: 0 10px 15px -3px hsl(35 20% 20% / 0.06), 0 4px 6px -4px hsl(35 20% 20% / 0.05);
+    --shadow-xl: 0 20px 25px -5px hsl(35 20% 20% / 0.08), 0 8px 10px -6px hsl(35 20% 20% / 0.05);
+    
+    /* Sidebar - Light, clean, professional */
+    --sidebar-background: 40 25% 97%;
+    --sidebar-foreground: 220 30% 20%;
+    --sidebar-primary: 175 35% 38%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 175 30% 92%;
+    --sidebar-accent-foreground: 175 35% 30%;
+    --sidebar-border: 35 15% 88%;
+    --sidebar-ring: 175 35% 38%;
+    
+    /* Brand Logo: show Firstclass logo */
+    --brand-logo-display: none;
+    --brand-logo-fc-display: block;
+  }
+
+  /* Dark mode variants */
+  .dark {
+    --background: 222 47% 8%;
+    --foreground: 210 40% 96%;
+    
+    --card: 222 47% 10%;
+    --card-foreground: 210 40% 96%;
+    --card-elevated: 222 47% 12%;
+    
+    --popover: 222 47% 10%;
+    --popover-foreground: 210 40% 96%;
+    
+    --primary: 215 30% 55%;
+    --primary-foreground: 222 47% 8%;
+    --primary-soft: 215 30% 18%;
+    --primary-hover: 215 35% 62%;
+    
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 96%;
+    
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 60%;
+    
+    --accent: 24 95% 55%;
+    --accent-foreground: 0 0% 100%;
+    --accent-soft: 24 50% 15%;
+    --accent-hover: 24 95% 62%;
+    
+    --success: 142 71% 50%;
+    --success-soft: 142 50% 15%;
+    
+    --warning: 38 92% 55%;
+    --warning-soft: 38 50% 15%;
+    
+    --destructive: 0 72% 55%;
+    --destructive-soft: 0 50% 15%;
+    
+    --border: 217 33% 20%;
+    --border-strong: 217 33% 28%;
+    --input: 217 33% 20%;
+    --ring: 215 30% 55%;
+    
+    --sidebar-background: 222 47% 8%;
+    --sidebar-foreground: 210 40% 96%;
+    --sidebar-primary: 215 30% 55%;
+    --sidebar-primary-foreground: 222 47% 8%;
+    --sidebar-accent: 217 33% 15%;
+    --sidebar-accent-foreground: 210 40% 96%;
+    --sidebar-border: 217 33% 17%;
+    --sidebar-ring: 215 30% 55%;
+  }
+
+  .dark.theme-firstclass {
+    --background: 200 25% 8%;
+    --foreground: 40 20% 95%;
+    
+    --card: 200 25% 10%;
+    --card-foreground: 40 20% 95%;
+    --card-elevated: 200 25% 12%;
+    
+    --popover: 200 25% 10%;
+    --popover-foreground: 40 20% 95%;
+    
+    --primary: 175 40% 50%;
+    --primary-foreground: 200 25% 8%;
+    --primary-soft: 175 30% 18%;
+    --primary-hover: 175 45% 58%;
+    
+    --secondary: 200 20% 17%;
+    --secondary-foreground: 40 20% 95%;
+    
+    --muted: 200 20% 17%;
+    --muted-foreground: 175 15% 55%;
+    
+    --accent: 42 75% 55%;
+    --accent-foreground: 200 25% 10%;
+    --accent-soft: 42 40% 18%;
+    --accent-hover: 42 75% 62%;
+    
+    --sidebar-background: 200 25% 8%;
+    --sidebar-foreground: 40 20% 95%;
+    --sidebar-primary: 175 40% 50%;
+    --sidebar-primary-foreground: 200 25% 8%;
+    --sidebar-accent: 175 25% 15%;
+    --sidebar-accent-foreground: 175 35% 70%;
+    --sidebar-border: 200 20% 17%;
+    --sidebar-ring: 175 40% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Sora', 'Inter', system-ui, sans-serif;
+    @apply font-semibold tracking-tight;
+  }
+}
+
+@layer components {
+  /* Premium Card Styles */
+  .card-elevated {
+    @apply bg-card rounded-xl border border-border;
+    box-shadow: var(--shadow-md);
+  }
+  
+  .card-elevated:hover {
+    box-shadow: var(--shadow-lg);
+  }
+  
+  /* Glass Effect */
+  .glass {
+    @apply bg-card/80 backdrop-blur-xl border border-border/50;
+  }
+  
+  /* Stat Card */
+  .stat-card {
+    @apply bg-card rounded-xl border border-border p-6 transition-all duration-200;
+    box-shadow: var(--shadow);
+  }
+  
+  .stat-card:hover {
+    box-shadow: var(--shadow-md);
+    @apply border-border-strong;
+  }
+  
+  /* Navigation Item */
+  .nav-item {
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-lg text-muted-foreground transition-all duration-200;
+  }
+  
+  .nav-item:hover {
+    @apply bg-secondary text-foreground;
+  }
+  
+  .nav-item.active {
+    @apply bg-primary/10 text-primary font-medium;
+  }
+  
+  /* Form Input Focus */
+  .input-premium {
+    @apply bg-card border border-border rounded-lg px-4 py-3 text-foreground placeholder:text-muted-foreground;
+    @apply focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary;
+    @apply transition-all duration-200;
+  }
+  
+  /* Badge Styles */
+  .badge-success {
+    @apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium;
+    @apply bg-success-soft text-success;
+  }
+  
+  .badge-warning {
+    @apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium;
+    @apply bg-warning-soft text-warning;
+  }
+  
+  .badge-accent {
+    @apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium;
+    @apply bg-accent-soft text-accent;
+  }
+  
+  /* Subtle Gradient Backgrounds */
+  .gradient-subtle {
+    background: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--card-elevated)) 100%);
+  }
+  
+  .gradient-hero {
+    background: linear-gradient(180deg, hsl(var(--background)) 0%, hsl(var(--primary-soft)) 100%);
+  }
+
+  /* Theme-specific logo visibility */
+  .brand-logo-default {
+    display: var(--brand-logo-display);
+  }
+  
+  .brand-logo-firstclass {
+    display: var(--brand-logo-fc-display);
+  }
+}
+
+@layer utilities {
+  /* Smooth Animations */
+  .animate-fade-up {
+    animation: fadeUp 0.5s ease-out forwards;
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 0.4s ease-out forwards;
+  }
+  
+  .animate-scale-in {
+    animation: scaleIn 0.3s ease-out forwards;
+  }
+  
+  .animate-slide-in-right {
+    animation: slideInRight 0.4s ease-out forwards;
+  }
+  
+  /* Stagger delays */
+  .delay-100 { animation-delay: 100ms; }
+  .delay-200 { animation-delay: 200ms; }
+  .delay-300 { animation-delay: 300ms; }
+  .delay-400 { animation-delay: 400ms; }
+  .delay-500 { animation-delay: 500ms; }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--border-strong));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground));
+}
