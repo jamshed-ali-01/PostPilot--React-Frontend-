@@ -1,7 +1,8 @@
 export const graphqlRequest = async (query: string, variables = {}) => {
     const token = localStorage.getItem('auth_token');
-    // Ensure we are pointing to the correct backend port (3000)
-    const response = await fetch('http://localhost:3000/graphql', {
+    // Use environment variable for API URL or default to localhost
+    const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000/graphql';
+    const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
