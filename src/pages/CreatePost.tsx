@@ -259,12 +259,13 @@ const CreatePost = () => {
       if (scheduleOption === 'custom' && customDate && customTime) {
         scheduledAt = new Date(`${customDate}T${customTime}`).toISOString();
       } else if (scheduleOption === 'optimal') {
-        // Default to tomorrow 10am
         const tomorrow = new Date();
         tomorrow.setDate(tomorrow.getDate() + 1);
         tomorrow.setHours(10, 0, 0, 0);
         scheduledAt = tomorrow.toISOString();
       }
+
+      const publishNow = scheduleOption === 'now';
 
       const mutation = isEditMode ? `
         mutation UpdatePost($input: UpdatePostInput!) {
@@ -288,6 +289,7 @@ const CreatePost = () => {
         targetingRegions: postcode ? [postcode] : [],
         platformIds: platformIds,
         scheduledAt: scheduledAt,
+        publishNow: publishNow,
         businessId: user.businessId,
         authorId: user.id
       };
@@ -300,12 +302,14 @@ const CreatePost = () => {
       const status = postData?.status;
 
       toast({
-        title: isEditMode ? 'Post updated!' : (status === 'PENDING_APPROVAL' ? 'Post submitted for approval!' : 'Post scheduled!'),
+        title: isEditMode ? 'Post updated!' : (publishNow ? 'Post published!' : (status === 'PENDING_APPROVAL' ? 'Post submitted for approval!' : 'Post scheduled!')),
         description: isEditMode ? 'Changes have been saved successfully.' : (status === 'PENDING_APPROVAL'
           ? 'Your post has been sent to the business owner for review.'
-          : platformIds.length > 0
-            ? `Your post has been scheduled to ${platformIds.length} platform(s).`
-            : 'Your post has been saved.'),
+          : publishNow
+            ? 'Your post has been published to the selected platforms.'
+            : platformIds.length > 0
+              ? `Your post has been scheduled to ${platformIds.length} platform(s).`
+              : 'Your post has been saved.'),
       });
 
       setTimeout(() => {
@@ -880,6 +884,12 @@ const CreatePost = () => {
                     <div className="space-y-3">
                       {[
                         {
+                          value: "now",
+                          label: "Post Now",
+                          desc: "Publish your post immediately to all platforms",
+                          icon: Zap,
+                        },
+                        {
                           value: "optimal",
                           label: "AI Optimal Time",
                           desc: "Let AI choose the best time for maximum engagement",
@@ -987,12 +997,12 @@ const CreatePost = () => {
                   {isSubmitting ? (
                     <>
                       <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                      Saving...
+                      {scheduleOption === 'now' ? 'Publishing...' : 'Saving...'}
                     </>
                   ) : (
                     <>
-                      <CheckCircle className="w-4 h-4 mr-2" />
-                      Schedule Post
+                      {scheduleOption === 'now' ? <Send className="w-4 h-4 mr-2" /> : <Calendar className="w-4 h-4 mr-2" />}
+                      {scheduleOption === 'now' ? 'Publish Now' : 'Schedule Post'}
                     </>
                   )}
                 </Button>
